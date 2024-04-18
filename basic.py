@@ -57,6 +57,14 @@ class Expression(ABC):
 
         return f'{a1l}{str(self.arg1)}{a1r}{self.operator.value}{a2l}{str(self.arg2)}{a2r}'
 
+    def is_zero(self):
+        if self.operator is Operator.ADD:
+            return self.arg1.is_zero() and self.arg2.is_zero()
+        elif self.operator is Operator.MUL:
+            return self.arg1.is_zero() or self.arg2.is_zero()
+        else:
+            raise ArithmeticError(":((((")
+
     def diff(self):
         if self.operator is Operator.ADD:
             return Expression(self.operator, self.arg1.diff(), self.arg2.diff())
@@ -93,9 +101,6 @@ class Expression(ABC):
             return self.arg1 + self.arg2
         elif isinstance(self.arg1, Variable) and isinstance(self.arg2, Variable):
             return self.arg1 + self.arg2
-        elif type(self.arg1) is type(self.arg2):
-            arg_new = type(self.arg1)()
-            return arg_new
 
         return self
 
