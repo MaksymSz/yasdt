@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class Function(ABC):
     def __init__(self, arg, factor=1):
         self.arg = arg
@@ -24,3 +25,7 @@ class Function(ABC):
     @abstractmethod
     def is_zero(self):
         pass
+
+    # @abstractmethod
+    # def eval(self, x):
+    #     pass

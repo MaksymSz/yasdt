@@ -1,8 +1,7 @@
 from abc import ABC
 from enum import Enum
 from functions.primary import Variable, Constant
-from func import Function
-from functions.function import Power
+from function import Function
 
 
 class Operator(Enum):
@@ -48,13 +47,15 @@ class Expression(ABC):
             arg1_new = Expression(Operator.MUL, self.arg1.diff(), self.arg2)
             arg2_new = Expression(Operator.MUL, self.arg1, self.arg2.diff())
 
-            nominator = Expression(Operator.SUB, arg1_new, arg2_new)
-            denominator = Power(self.arg2, 2)
-
-            return Expression(Operator.DIV, nominator, denominator)
+            return Expression(Operator.ADD, arg1_new, arg2_new)
         elif self.operator is Operator.DIV:
             arg1_new = Expression(Operator.MUL, self.arg1.diff(), self.arg2)
             arg2_new = Expression(Operator.MUL, self.arg1, self.arg2.diff())
+
+            nominator = Expression(Operator.SUB, arg1_new, arg2_new)
+            denominator = Expression(Operator.MUL, self.arg2, self.arg2)
+
+            return Expression(Operator.DIV, nominator, denominator)
 
         else:
             raise ArithmeticError("Something goes wrong calling diff")
@@ -73,6 +74,9 @@ class Expression(ABC):
             return self._simplify_mul()
 
     def _simplify_add(self):
+        if self.arg1 is None or self.arg2 is None:
+            print('----')
+            print(self)
         if self.arg1.is_zero() and self.arg2.is_zero():
             return Constant(0)
         elif self.arg1.is_zero():

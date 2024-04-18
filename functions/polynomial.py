@@ -1,4 +1,4 @@
-from basic import Function
+from function import Function
 from functions.primary import Variable, Constant
 
 

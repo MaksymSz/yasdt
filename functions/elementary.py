@@ -2,7 +2,7 @@ from basic import Expression
 from basic import Operator
 from functions.primary import Constant
 import math
-from func import Function
+from function import Function
 
 
 class Sin(Function):
@@ -81,6 +81,4 @@ class Power(Function):
 # TODO: add more basic functions like:
 #   exponential function
 #   tangent and cotangent
-#   power
 #   logarithm
-#   class polynomial, which is not sum of terms, but one expression for better computation
