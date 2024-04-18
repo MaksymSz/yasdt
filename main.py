@@ -1,16 +1,11 @@
-# This is a sample Python script.
+from functions import function
+from functions import primary
+from basic import Expression, Operator
+from functions.polynomial import Polynomial
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+e1 = Expression(Operator.MUL, function.Sin(primary.Variable(1)), function.Cos(primary.Variable(1)))
+e2 = Expression(Operator.MUL, function.Sin(primary.Constant(0)), primary.Variable(3))
 
+s1 = Expression(Operator.ADD, e1, e2)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(s1)
