@@ -15,6 +15,7 @@ TODO: Add grammar, and add syntax tree for example expression
 * After getting known with parsing trees generated with ANTLR4 create class `ExpressionBuilder` for building expressions while traversing tree
 * In future may add eval() function for plotting graphs and maybe general function plot() to plot visualization of given expression
 * Do simple GUI
+* Add method, that generate latex notation for expression
 
 # Tests
 Custom test, e.i. some large expressions etc.
