@@ -2,7 +2,7 @@ from basic import Expression
 from basic import Operator
 from functions.primary import Constant
 import math
-from basic import Function
+from func import Function
 
 
 class Sin(Function):
@@ -53,6 +53,27 @@ class Cos(Function):
         if isinstance(self.arg, Constant):
             return Constant(math.cos(self.arg.value))
         return self
+
+    def is_zero(self):
+        pass
+
+
+class Power(Function):
+    def __init__(self, arg, pow_):
+        super().__init__(arg)
+        self.pow_ = pow_
+
+    def __str__(self):
+        pass
+
+    def __eq__(self, other):
+        pass
+
+    def diff(self):
+        pass
+
+    def simplify(self):
+        pass
 
     def is_zero(self):
         pass
