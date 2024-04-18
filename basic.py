@@ -35,6 +35,10 @@ class Function(ABC):
     def is_zero(self):
         pass
 
+    # TODO: in future may add eval() function for plotting graphs
+    #   and maybe general function plot() to plot visualization
+    #   of given expression
+
 
 class Expression(ABC):
     def __init__(self, operator, arg1, arg2=None):
