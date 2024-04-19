@@ -13,11 +13,23 @@ class Operator(Enum):
 
 class Expression(ABC):
     def __init__(self, operator, arg1, arg2=None):
+        """
+
+        Parameters
+        ----------
+        operator
+        arg1
+        arg2
+        """
         self.arg1 = arg1
         self.arg2 = arg2
         self.operator = operator
 
     def __str__(self):
+        """
+
+        :return:
+        """
         a1l = ""
         a1r = ""
         a2l = ""
@@ -33,6 +45,10 @@ class Expression(ABC):
         return f'{a1l}{str(self.arg1)}{a1r}{self.operator.value}{a2l}{str(self.arg2)}{a2r}'
 
     def is_zero(self):
+        """
+
+        :return:
+        """
         if self.operator is Operator.ADD:
             return self.arg1.is_zero() and self.arg2.is_zero()
         elif self.operator is Operator.MUL:

@@ -2,7 +2,13 @@
 TODO: Description
 
 # Grammar:
-TODO: Add grammar, and add syntax tree for example expression
+```md
+E &rarr; T | E+T
+T &rarr; F | T+F
+F &rarr; (E) | I
+I &rarr; x | c | U
+U &rarr; name(E)
+```
 
 # Roadmap:
 * For better computation, add simplify after every differentiation
@@ -25,4 +31,3 @@ Custom test, e.i. some large expressions etc.
   - Expression as ABC (Abstract Basic Class)
   - classes: Add, Mul, Sub, Div which repersent suitable operator
   - Add and Mull with `flatten` method which work i.e. `Add(x, Add(x, x)).flattenn()` -> `Add(x, x, x,)`
-  - 

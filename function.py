@@ -2,7 +2,13 @@ from abc import ABC, abstractmethod
 
 
 class Function(ABC):
+
     def __init__(self, arg, factor=1):
+        """
+
+        :param arg:
+        :param factor:
+        """
         self.arg = arg
         self.factor = factor
 
