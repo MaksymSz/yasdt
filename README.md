@@ -2,24 +2,23 @@
 TODO: Description
 
 # Grammar:
+**_TODO_** delete left-side factorization in **U_EXP**, delete **I** by move his productions to **F**
 ```md
 E &rarr; T | E+T
 T &rarr; F | T+F
 F &rarr; (E) | I
 I &rarr; x | c | U
-U &rarr; name(E)
-```
-```md
->E &rarr; T | E+T
->T &rarr; F | T+F
->F &rarr; (E) | I
->I &rarr; x | c | U
-```
-```md
-adsad *sadasd*
+U &rarr; U_FUNCNAME
+
+U_SIN &rarr; sin(E)
+U_COS &rarr; cos(E)
+U_TAN &rarr; tan(E)
+U_COT &rarr; cot(E)
+U_EXP &rarr; e^U | e^{E}
+U_POW &rarr; E^c
 ```
 
-asdasdsad *sadasd* 
+**_NOTE:_** *c* stands for Constant, *x* stands for Variable
 
 # Roadmap:
 * For better computation, add simplify after every differentiation
