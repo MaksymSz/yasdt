@@ -1,6 +1,5 @@
-from functions import elementary
-from functions import primary
-from basic import Expression, Operator
+from yasdt.functions import elementary, primary
+from yasdt.core import Expression, Operator
 
 e1 = Expression(Operator.MUL, elementary.Sin(primary.Variable(1)), elementary.Cos(primary.Variable(2)))
 e2 = Expression(Operator.MUL, elementary.Sin(primary.Constant(0)), primary.Variable(3))

@@ -1,8 +1,8 @@
-from basic import Expression
-from basic import Operator
-from functions.primary import Constant
+from yasdt.core import Expression
+from yasdt.core import Operator
+from yasdt.functions.primary import Constant
 import math
-from function import Function
+from yasdt.function import Function
 
 
 class Sin(Function):

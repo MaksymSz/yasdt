@@ -3,6 +3,7 @@ TODO: Description
 
 # Grammar:
 **_TODO_** delete left-side factorization in **U_EXP**, delete **I** by move his productions to **F**
+**_TODO_** add Subtraction and Deriving operators
 ```md
 E &rarr; T | E+T
 T &rarr; F | T+F
