@@ -19,3 +19,10 @@ TODO: Add grammar, and add syntax tree for example expression
 
 # Tests
 Custom test, e.i. some large expressions etc.
+
+# Notes:
+* Rebuild project:
+  - Expression as ABC (Abstract Basic Class)
+  - classes: Add, Mul, Sub, Div which repersent suitable operator
+  - Add and Mull with `flatten` method which work i.e. `Add(x, Add(x, x)).flattenn()` -> `Add(x, x, x,)`
+  - 
