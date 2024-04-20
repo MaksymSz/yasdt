@@ -2,82 +2,90 @@
 TODO: Description
 
 # Grammar:
-**_TODO_** delete left-side factorization in **U_EXP**, delete **I** by move his productions to **F**
-**_TODO_** add Subtraction and Deriving operators
 ```md
 grammar expressions;
 
 expr
-  : term
-  | expr OPER1 term
-  ;
+    : term
+    | expr ADD term
+    ;
 
 term
-  : factor
-  | term OPER1 factor
-  ;
+    : factor
+    | term MUL factor
+    ;
 
 factor
-  : LPAREN E RPAREN
-  | arg
-  ;
+    : LPAREN E RPAREN
+    | arg
+    ;
 
 arg
-  : VARIABLE
-  | CONSTANT
-  | function
-  ;
+    : VARIABLE
+    | CONSTANT
+    | function
+    ;
 
 function
-  : sin
-  | cos
-  | tan
-  | cot
-  | exp
-  | power
-  | log
-  ;
+    : sin
+    | cos
+    | tan
+    | cot
+    | exp
+    | power
+    | log
+    ;
 
 sin
-	: 'sin' LPAREN E RPAREN
-	;
+    : 'sin' LPAREN E RPAREN
+    ;
 cos
-	: 'cos' LPAREN E RPAREN
-	;
+    : 'cos' LPAREN E RPAREN
+    ;
 tan
-	: 'tan' LPAREN E RPAREN
-	;
+    : 'tan' LPAREN E RPAREN
+    ;
 cot
-	: 'cot' LPAREN E RPAREN
-	;
+    : 'cot' LPAREN E RPAREN
+    ;
 exp
-	: 'e' POW arg
-	| 'e' POW LBRAC expr RBRAC
-	;
+    : 'e' POW arg
+    | 'e' POW LBRAC expr RBRAC
+    ;
 power
-	: factor POW CONSTANT
-	;
+    : factor POW CONSTANT
+    ;
 log
-	: 'log_' LOGBASE LPAREN E RPAREN
-	| 'ln' LPAREN E RPAREN
-	;
+    : 'log_' LOGBASE LPAREN E RPAREN
+    | 'ln' LPAREN E RPAREN
+    ;
 fragment LOGBASE
-	: '0.' ('1' .. '9') ('0' .. '9')+
-	| '1.' ('1' .. '9') ('0' .. '9')+
-	| ('2' .. '9')+ ('.' ('0' .. '9')+)?
-	;
+    : '0.' ('1' .. '9') ('0' .. '9')+
+    | '1.' ('1' .. '9') ('0' .. '9')+
+    | ('2' .. '9')+ ('.' ('0' .. '9')+)?
+    ;
 
 VARIABLE
-  : CONSTANT 'x'
-  ;
+    : CONSTANT 'x'
+    ;
 
 CONSTANT
-  : LPAREN '-' NUMBER RPAREN
-  : NUMBER
-  ;
+    : LPAREN '-' NUMBER RPAREN
+    : NUMBER
+    ;
 
 fragment NUMBER
     : ('0' .. '9')+ ('.' ('0' .. '9')+)?
+    ;
+
+ADD
+    : '+'
+    | '-'
+    ;
+
+MUL
+    : '*'
+    | '/'
     ;
 
 LPAREN
