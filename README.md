@@ -71,6 +71,7 @@ fragment LOGBASE
 
 VARIABLE
     : CONSTANT 'x'
+    | 'x'
     ;
 
 CONSTANT
