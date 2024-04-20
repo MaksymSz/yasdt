@@ -146,7 +146,7 @@ WS
 * More elementary functions:
   - [x] exponential function
   - [ ] polynomials
-  - [x] power
+  - [ ] power
   - [x] tangent and cotangent
   - [ ] logarithm
 * After getting known with parsing trees generated with ANTLR4 create class `ExpressionBuilder` for building expressions while traversing tree
