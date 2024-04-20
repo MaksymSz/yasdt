@@ -5,6 +5,10 @@ TODO: Description
 ```md
 grammar expressions;
 
+program
+    : expr EOF
+    ;
+
 expr
     : term
     | expr ADD term
