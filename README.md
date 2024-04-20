@@ -150,7 +150,14 @@ WS
 * Add method, that generate latex notation for expression
 
 # Tests
-Custom test, e.i. some large expressions etc.
+1. `x + x * x`
+2. `x * x + x * x`
+3. `sin(x) + cos(2x)`
+4. `sin(e^x) * ln(x - 2x)`
+5. `(x + 2x) * sin((-4)x + e^3) - cos(x * x)`
+6. `e^{sin(2 * x)} + 3x^2 - 5`
+7. `(-12.3e^3 + 7) / x`
+
 
 # Notes:
 * Rebuild project:
