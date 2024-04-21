@@ -1,58 +1,55 @@
-grammar expressions;
+grammar ExpressionGrammar;
+
+start
+    : expr EOF
+    ;
 
 expr
     : term
-    | expr ADD term
+    | term ADD expr
     ;
 
 term
     : factor
-    | term MUL factor
+    | factor MUL term
     ;
 
 factor
-    : LPAREN E RPAREN
-    | arg
-    ;
-
-arg
-    : VARIABLE
+    : LPAREN expr RPAREN
+    | VARIABLE
     | CONSTANT
     | function
     ;
 
 function
-    : sin
-    | cos
-    | tan
-    | cot
-    | exp
-    | power
-    | log
+    : sinus
+    | cosinus
+    | tangent
+    | cotangent
+    | exponential
+    | logarithm
     ;
 
-sin
-    : 'sin' LPAREN E RPAREN
+sinus
+    : 'sin' LPAREN expr RPAREN
     ;
-cos
-    : 'cos' LPAREN E RPAREN
+cosinus
+    : 'cos' LPAREN expr RPAREN
     ;
-tan
-    : 'tan' LPAREN E RPAREN
+tangent
+    : 'tan' LPAREN expr RPAREN
     ;
-cot
-    : 'cot' LPAREN E RPAREN
+cotangent
+    : 'cot' LPAREN expr RPAREN
     ;
-exp
-    : 'e' POW arg
+exponential
+    : 'e' POW factor
     | 'e' POW LBRAC expr RBRAC
     ;
-power
-    : factor POW CONSTANT
-    ;
-log
-    : 'log_' LOGBASE LPAREN E RPAREN
-    | 'ln' LPAREN E RPAREN
+
+logarithm
+    : 'log_' LOGBASE LPAREN expr RPAREN
+    | 'ln' LPAREN expr RPAREN
     ;
 fragment LOGBASE
     : '0.' ('1' .. '9') ('0' .. '9')+
@@ -62,11 +59,12 @@ fragment LOGBASE
 
 VARIABLE
     : CONSTANT 'x'
+    |'x'
     ;
 
 CONSTANT
     : LPAREN '-' NUMBER RPAREN
-    : NUMBER
+    | NUMBER
     ;
 
 fragment NUMBER
