@@ -54,6 +54,11 @@ class ExpressionGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExpressionGrammarParser#power.
+    def visitPower(self, ctx:ExpressionGrammarParser.PowerContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExpressionGrammarParser#variable.
     def visitVariable(self, ctx:ExpressionGrammarParser.VariableContext):
         return self.visitChildren(ctx)

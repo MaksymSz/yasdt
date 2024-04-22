@@ -89,6 +89,15 @@ class ExpressionGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExpressionGrammarParser#power.
+    def enterPower(self, ctx:ExpressionGrammarParser.PowerContext):
+        pass
+
+    # Exit a parse tree produced by ExpressionGrammarParser#power.
+    def exitPower(self, ctx:ExpressionGrammarParser.PowerContext):
+        pass
+
+
     # Enter a parse tree produced by ExpressionGrammarParser#variable.
     def enterVariable(self, ctx:ExpressionGrammarParser.VariableContext):
         pass

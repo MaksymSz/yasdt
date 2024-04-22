@@ -1,11 +1,12 @@
 from gen.ExpressionGrammarListener import ExpressionGrammarListener
-from calc.test.CalcParser import CalcParser
 from gen.ExpressionGrammarParser import ExpressionGrammarParser
 from yasdt.operators.add import Add, Sub
 from yasdt.operators.mul import Mul, Div
 from yasdt.primary import Variable, Constant
 from yasdt.functions.trigonometric import Sin, Cos, Tan, Cot
 from yasdt.functions.exponent import Exponent
+from yasdt.functions.power import Power
+from yasdt.function import Function
 
 
 class ExpressionListener(ExpressionGrammarListener):
@@ -57,6 +58,19 @@ class ExpressionListener(ExpressionGrammarListener):
     def exitExponential(self, ctx: ExpressionGrammarParser.ExponentialContext):
         arg = self.stack.pop()
         self.stack.append(Exponent(arg))
+
+    def exitPower(self, ctx: ExpressionGrammarParser.PowerContext):
+        arg = self.stack.pop()
+        powarg = float(ctx.NUMBER().getText())
+        if powarg % 1 == 0:
+            powarg = int(powarg)
+
+        if 3 == ctx.getChildCount() and isinstance(arg, Variable):
+            f = arg.factor
+            arg.factor = 1
+            self.stack.append(Power(arg, factor=f, powarg=powarg))
+        else:
+            self.stack.append(Power(arg, factor=1, powarg=powarg))
 
     def exitVariable(self, ctx: ExpressionGrammarParser.VariableContext):
         if ctx.getChildCount() == 2:

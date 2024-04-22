@@ -23,6 +23,7 @@ function
     | tangent
     | cotangent
     | exponential
+    | power
 //    | logarithm
     ;
 
@@ -41,6 +42,12 @@ cotangent
 exponential
     : 'e' POW factor
     | 'e' POW LBRAC expr RBRAC
+    ;
+power
+    : variable POW NUMBER
+    | constant POW NUMBER
+    | 'pow' LPAREN factor ',' NUMBER RPAREN
+    | 'pow' LPAREN expr ',' NUMBER RPAREN
     ;
 
 //logarithm

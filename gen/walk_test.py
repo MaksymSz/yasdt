@@ -3,7 +3,7 @@ from gen.ExpressionGrammarLexer import ExpressionGrammarLexer
 from gen.ExpressionGrammarParser import ExpressionGrammarParser
 from gen.ExpressionListener import ExpressionListener
 
-input_text = "tan(2) + cot(2x)*e^2 + sin(x)"
+input_text = "2^2 + x^2 + pow((2x + 2), 2) + pow(2x + 2, 2)"
 lexer = ExpressionGrammarLexer(InputStream(input_text))
 stream = CommonTokenStream(lexer)
 parser = ExpressionGrammarParser(stream)

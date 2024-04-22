@@ -13,7 +13,7 @@ class Power(Function):
         f = "" if f == '1' else f
 
         if isinstance(self.arg, Operator):
-            return f'{f}{"{"}{str(self.arg)}{"}"}^{self.powarg}'
+            return f'{f}{"("}{str(self.arg)}{")"}^{self.powarg}'
         return f'{f}{str(self.arg)}^{self.powarg}'
 
     def __eq__(self, other):
