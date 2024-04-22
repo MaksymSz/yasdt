@@ -56,7 +56,7 @@ logarithm
     : 'log_' LOGBASE LPAREN expr RPAREN
     | 'ln' LPAREN expr RPAREN
     ;
-fragment LOGBASE
+LOGBASE
     : '0.' ('1' .. '9') ('0' .. '9')+
     | '1.' ('1' .. '9') ('0' .. '9')+
     | ('2' .. '9')+ ('.' ('0' .. '9')+)?
