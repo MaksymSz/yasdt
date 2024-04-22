@@ -32,6 +32,7 @@ class Function(ABC):
     def is_zero(self):
         pass
 
+    # TODO: implement
     # @abstractmethod
     # def eval(self, x):
     #     pass

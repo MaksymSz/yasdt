@@ -2,6 +2,7 @@ from yasdt.core import Function
 from yasdt.operators.operator import Operator
 from yasdt.operators.mul import Mul
 from yasdt.primary import Variable, Constant
+import math
 
 
 class Exponent(Function):
@@ -26,7 +27,10 @@ class Exponent(Function):
             return Mul(self.arg.diff(), self)
 
     def simplify(self):
-        pass
+        arg = self.arg.simplify()
+        if isinstance(arg, Constant):
+            return Constant(math.exp(arg.value))
+        return Exponent(arg, factor=self.factor)
 
     def is_zero(self):
-        return self.arg.is_zero()
+        return False

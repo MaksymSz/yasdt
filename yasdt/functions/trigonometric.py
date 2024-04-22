@@ -2,6 +2,7 @@ from yasdt.operators.mul import Mul
 from yasdt.primary import Constant
 import math
 from yasdt.function import Function
+from yasdt.operators.mul import Div
 
 
 class Sin(Function):
@@ -60,13 +61,20 @@ class Cos(Function):
 class Tan(Function):
 
     def __str__(self):
-        pass
+        if self.factor == 1:
+            f = ""
+        elif self.factor < 0:
+            f = "-" if self.factor == -1 else str(self.factor)
+            return f'({f}tan({str(self.arg)}))'
+        else:
+            f = str(self.factor)
+        return f'{f}tan({str(self.arg)})'
 
     def __eq__(self, other):
         pass
 
     def diff(self):
-        pass
+        return Div(Constant(1), Pow)
 
     def simplify(self):
         pass
@@ -78,7 +86,14 @@ class Tan(Function):
 class Cot(Function):
 
     def __str__(self):
-        pass
+        if self.factor == 1:
+            f = ""
+        elif self.factor < 0:
+            f = "-" if self.factor == -1 else str(self.factor)
+            return f'({f}cot({str(self.arg)}))'
+        else:
+            f = str(self.factor)
+        return f'{f}cot({str(self.arg)})'
 
     def __eq__(self, other):
         pass
