@@ -59,6 +59,11 @@ class ExpressionGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExpressionGrammarParser#logarithm.
+    def visitLogarithm(self, ctx:ExpressionGrammarParser.LogarithmContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExpressionGrammarParser#variable.
     def visitVariable(self, ctx:ExpressionGrammarParser.VariableContext):
         return self.visitChildren(ctx)

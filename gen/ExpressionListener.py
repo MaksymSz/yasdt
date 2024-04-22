@@ -1,3 +1,5 @@
+import math
+
 from gen.ExpressionGrammarListener import ExpressionGrammarListener
 from gen.ExpressionGrammarParser import ExpressionGrammarParser
 from yasdt.operators.add import Add, Sub
@@ -7,6 +9,7 @@ from yasdt.functions.trigonometric import Sin, Cos, Tan, Cot
 from yasdt.functions.exponent import Exponent
 from yasdt.functions.power import Power
 from yasdt.function import Function
+from yasdt.functions.logarithm import Logarithm
 
 
 class ExpressionListener(ExpressionGrammarListener):
@@ -71,6 +74,16 @@ class ExpressionListener(ExpressionGrammarListener):
             self.stack.append(Power(arg, factor=f, powarg=powarg))
         else:
             self.stack.append(Power(arg, factor=1, powarg=powarg))
+
+    def exitLogarithm(self, ctx: ExpressionGrammarParser.LogarithmContext):
+        if ctx.getChild(0).getText() == 'ln':
+            base = math.e
+        else:
+            base = float(ctx.LOGBASE().getText()[1:])
+            if base % 1 == 0:
+                base = int(base)
+        arg = self.stack.pop()
+        self.stack.append(Logarithm(arg, factor=1, base=base))
 
     def exitVariable(self, ctx: ExpressionGrammarParser.VariableContext):
         if ctx.getChildCount() == 2:

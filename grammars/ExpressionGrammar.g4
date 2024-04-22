@@ -24,7 +24,7 @@ function
     | cotangent
     | exponential
     | power
-//    | logarithm
+    | logarithm
     ;
 
 sinus
@@ -50,21 +50,11 @@ power
     | 'pow' LPAREN expr ',' NUMBER RPAREN
     ;
 
-//logarithm
-//    : LOG LOGBASE LPAREN expr RPAREN
-//    | LOG LPAREN expr RPAREN
-//    ;
-//
-//LOG
-//    : 'log_'
-//    | 'ln'
-//    ;
-//
-//LOGBASE
-//    : '0.' ('1' .. '9') ('0' .. '9')+
-//    | '1.' ('1' .. '9') ('0' .. '9')+
-//    | ('2' .. '9')+ ('.' ('0' .. '9')+)?
-//    ;
+logarithm
+    : 'log' LOGBASE LPAREN expr RPAREN
+    | 'ln' LPAREN expr RPAREN
+    ;
+
 
 variable
     : NUMBER 'x'
@@ -78,6 +68,12 @@ constant
 
 NUMBER
     : '-'? [0-9]+ ('.' [0-9]+)?
+    ;
+
+LOGBASE
+    : UNDER '0.' ('1' .. '9') ('0' .. '9')+
+    | UNDER '1.' ('1' .. '9') ('0' .. '9')+
+    | UNDER ('2' .. '9')+ ('.' ('0' .. '9')+)?
     ;
 
 ADD
@@ -128,6 +124,10 @@ POINT
 
 POW
     : '^'
+    ;
+
+UNDER
+    : '_'
     ;
 
 WS

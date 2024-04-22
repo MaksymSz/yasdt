@@ -98,6 +98,15 @@ class ExpressionGrammarListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExpressionGrammarParser#logarithm.
+    def enterLogarithm(self, ctx:ExpressionGrammarParser.LogarithmContext):
+        pass
+
+    # Exit a parse tree produced by ExpressionGrammarParser#logarithm.
+    def exitLogarithm(self, ctx:ExpressionGrammarParser.LogarithmContext):
+        pass
+
+
     # Enter a parse tree produced by ExpressionGrammarParser#variable.
     def enterVariable(self, ctx:ExpressionGrammarParser.VariableContext):
         pass
