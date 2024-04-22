@@ -57,10 +57,7 @@ class Cos(Function):
         pass
 
 
-class Power(Function):
-    def __init__(self, arg, pow_):
-        super().__init__(arg)
-        self.pow_ = pow_
+class Tan(Function):
 
     def __str__(self):
         pass
@@ -77,3 +74,20 @@ class Power(Function):
     def is_zero(self):
         pass
 
+
+class Cot(Function):
+
+    def __str__(self):
+        pass
+
+    def __eq__(self, other):
+        pass
+
+    def diff(self):
+        pass
+
+    def simplify(self):
+        pass
+
+    def is_zero(self):
+        pass

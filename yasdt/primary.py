@@ -26,6 +26,9 @@ class Variable:
     def is_zero(self):
         return self.factor == 0
 
+    def eval(self, x):
+        return self.factor * x
+
 
 class Constant:
     def __init__(self, value):
@@ -51,3 +54,6 @@ class Constant:
 
     def is_zero(self):
         return self.value == 0
+
+    def eval(self, x):
+        return self.value

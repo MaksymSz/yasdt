@@ -12,8 +12,8 @@ term
 
 factor
     : LPAREN expr RPAREN
-    | VARIABLE
-    | CONSTANT
+    | variable
+    | constant
     | function
     ;
 
@@ -23,7 +23,7 @@ function
     | tangent
     | cotangent
     | exponential
-    | logarithm
+//    | logarithm
     ;
 
 sinus
@@ -43,28 +43,34 @@ exponential
     | 'e' POW LBRAC expr RBRAC
     ;
 
-logarithm
-    : 'log_' LOGBASE LPAREN expr RPAREN
-    | 'ln' LPAREN expr RPAREN
-    ;
-LOGBASE
-    : '0.' ('1' .. '9') ('0' .. '9')+
-    | '1.' ('1' .. '9') ('0' .. '9')+
-    | ('2' .. '9')+ ('.' ('0' .. '9')+)?
-    ;
+//logarithm
+//    : LOG LOGBASE LPAREN expr RPAREN
+//    | LOG LPAREN expr RPAREN
+//    ;
+//
+//LOG
+//    : 'log_'
+//    | 'ln'
+//    ;
+//
+//LOGBASE
+//    : '0.' ('1' .. '9') ('0' .. '9')+
+//    | '1.' ('1' .. '9') ('0' .. '9')+
+//    | ('2' .. '9')+ ('.' ('0' .. '9')+)?
+//    ;
 
-VARIABLE
-    : CONSTANT 'x'
+variable
+    : NUMBER 'x'
     |'x'
     ;
 
-CONSTANT
+constant
     : LPAREN '-' NUMBER RPAREN
     | NUMBER
     ;
 
-fragment NUMBER
-    : ('0' .. '9')+ ('.' ('0' .. '9')+)?
+NUMBER
+    : '-'? [0-9]+ ('.' [0-9]+)?
     ;
 
 ADD

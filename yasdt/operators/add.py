@@ -46,3 +46,6 @@ class Add(Operator):
         if len(_args) == 1:
             return _args[0]
         return Add(*_args)
+
+class Sub(Operator):
+    pass

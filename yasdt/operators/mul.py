@@ -54,3 +54,7 @@ class Mul(Operator):
             return Constant(0)
 
         return Mul(*_args)
+
+
+class Div(Operator):
+    pass
