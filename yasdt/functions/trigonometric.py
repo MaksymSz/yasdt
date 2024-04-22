@@ -1,6 +1,5 @@
-from yasdt.core import Expression
-from yasdt.core import Operator
-from yasdt.functions.primary import Constant
+from yasdt.operators.mul import Mul
+from yasdt.primary import Constant
 import math
 from yasdt.function import Function
 
@@ -13,7 +12,7 @@ class Sin(Function):
         return f'{self.factor if self.factor != 1 else ""}sin({str(self.arg)})'
 
     def diff(self):
-        return Expression(Operator.MUL, self.arg.diff(), Cos(self.arg))
+        return Mul(self.arg.diff(), Cos(self.arg))
 
     def simplify(self):
         if self.factor == 0:
@@ -43,7 +42,7 @@ class Cos(Function):
         return f'{f}cos({str(self.arg)})'
 
     def diff(self):
-        return Expression(Operator.MUL, self.arg.diff(), Sin(self.arg, -1))
+        return Mul(self.arg.diff(), Sin(self.arg, -1))
 
     def simplify(self):
         if self.factor == 0:
@@ -78,7 +77,3 @@ class Power(Function):
     def is_zero(self):
         pass
 
-# TODO: add more basic functions like:
-#   exponential function
-#   tangent and cotangent
-#   logarithm

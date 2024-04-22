@@ -1,5 +1,5 @@
 from yasdt.function import Function
-from yasdt.functions.primary import Constant
+from yasdt.primary import Constant
 
 
 class Polynomial(Function):
