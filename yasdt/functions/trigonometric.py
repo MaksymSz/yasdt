@@ -3,15 +3,26 @@ from yasdt.primary import Constant
 import math
 from yasdt.function import Function
 from yasdt.operators.mul import Div
+from abc import abstractmethod, ABC
 
 
-class Sin(Function):
-    def __eq__(self, other):
-        pass
-
+class TrigFunc(Function, ABC):
     def __str__(self):
-        return f'{self.factor if self.factor != 1 else ""}sin({str(self.arg)})'
+        funcname = self.__class__.__name__.lower()
+        if self.factor == 1:
+            f = ""
+        elif self.factor < 0:
+            f = "-" if self.factor == -1 else str(self.factor)
+            return f'({f}{funcname}({str(self.arg)}))'
+        else:
+            f = str(self.factor)
+        return f'{f}{funcname}({str(self.arg)})'
 
+    def __eq__(self, other):
+        raise NotImplemented
+
+
+class Sin(TrigFunc):
     def diff(self):
         return Mul(self.arg.diff(), Cos(self.arg))
 
@@ -28,19 +39,7 @@ class Sin(Function):
         pass
 
 
-class Cos(Function):
-    def __eq__(self, other):
-        pass
-
-    def __str__(self):
-        if self.factor == 1:
-            f = ""
-        elif self.factor < 0:
-            f = "-" if self.factor == -1 else str(self.factor)
-            return f'({f}cos({str(self.arg)}))'
-        else:
-            f = str(self.factor)
-        return f'{f}cos({str(self.arg)})'
+class Cos(TrigFunc):
 
     def diff(self):
         return Mul(self.arg.diff(), Sin(self.arg, -1))
@@ -58,23 +57,9 @@ class Cos(Function):
         pass
 
 
-class Tan(Function):
-
-    def __str__(self):
-        if self.factor == 1:
-            f = ""
-        elif self.factor < 0:
-            f = "-" if self.factor == -1 else str(self.factor)
-            return f'({f}tan({str(self.arg)}))'
-        else:
-            f = str(self.factor)
-        return f'{f}tan({str(self.arg)})'
-
-    def __eq__(self, other):
-        pass
-
+class Tan(TrigFunc):
     def diff(self):
-        return Div(Constant(1), Pow)
+        pass
 
     def simplify(self):
         pass
@@ -83,21 +68,7 @@ class Tan(Function):
         pass
 
 
-class Cot(Function):
-
-    def __str__(self):
-        if self.factor == 1:
-            f = ""
-        elif self.factor < 0:
-            f = "-" if self.factor == -1 else str(self.factor)
-            return f'({f}cot({str(self.arg)}))'
-        else:
-            f = str(self.factor)
-        return f'{f}cot({str(self.arg)})'
-
-    def __eq__(self, other):
-        pass
-
+class Cot(TrigFunc):
     def diff(self):
         pass
 

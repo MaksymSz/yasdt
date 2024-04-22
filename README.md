@@ -140,9 +140,10 @@ WS
   - [ ] polynomials
   - [x] power
   - [x] tangent and cotangent
-  - [ ] logarithm
+  - [x] logarithm
 * After getting known with parsing trees generated with ANTLR4 create class `ExpressionBuilder` for building expressions while traversing tree
 * In future may add eval() function for plotting graphs and maybe general function plot() to plot visualization of given expression
+* Improve printing operators
 * Do simple GUI
 * Add method, that generate latex notation for expression
 

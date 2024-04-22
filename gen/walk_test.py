@@ -3,7 +3,7 @@ from gen.ExpressionGrammarLexer import ExpressionGrammarLexer
 from gen.ExpressionGrammarParser import ExpressionGrammarParser
 from gen.ExpressionListener import ExpressionListener
 
-input_text = "3x^3 + 3x^2 + 3x^1"
+input_text = "(x + 2x) * sin(4x + x) + cos(x * x)"
 lexer = ExpressionGrammarLexer(InputStream(input_text))
 stream = CommonTokenStream(lexer)
 parser = ExpressionGrammarParser(stream)
@@ -18,4 +18,6 @@ walker.walk(listener, tree)
 exp = listener.stack.pop()
 print(input_text)
 print(exp)
-print(exp.diff())
+dif = exp.diff()
+print(dif)
+print(dif.simplify())

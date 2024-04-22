@@ -37,7 +37,11 @@ class Mul(Operator):
         _factor = 1
         _args = []
         _flag = False
+        _simple = []
         for arg in self.args:
+            _simple.append(arg.simplify())
+
+        for arg in _simple:
             if isinstance(arg, Constant):
                 _factor *= arg.value
             elif isinstance(arg, Variable):
@@ -48,6 +52,9 @@ class Mul(Operator):
 
         if _flag:
             _args.append(Variable(_factor))
+        elif len(_args) == 1:
+            _args[0].factor *= _factor
+            return _args[0]
         else:
             _args.append(Constant(_factor))
         if _factor == 0:

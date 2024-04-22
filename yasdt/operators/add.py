@@ -36,7 +36,11 @@ class Add(Operator):
     def simplify(self):
         _const = 0
         _args = []
+        _simple = []
         for arg in self.args:
+            _simple.append(arg.simplify())
+
+        for arg in _simple:
             if isinstance(arg, Constant):
                 _const += arg.value
             else:
