@@ -1,4 +1,4 @@
-# Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammars/ExpressionGrammar.g4 by ANTLR 4.13.1
+# Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammar/ExpressionGrammarParser.g4 by ANTLR 4.13.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -58,7 +58,7 @@ def serializedATN():
 
 class ExpressionGrammarParser ( Parser ):
 
-    grammarFileName = "ExpressionGrammar.g4"
+    grammarFileName = "ExpressionGrammarParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 

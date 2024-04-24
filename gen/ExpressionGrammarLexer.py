@@ -1,4 +1,4 @@
-# Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammars/ExpressionGrammar.g4 by ANTLR 4.13.1
+# Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammar/ExpressionGrammarParser.g4 by ANTLR 4.13.1
 from antlr4 import *
 from io import StringIO
 import sys
@@ -125,7 +125,7 @@ class ExpressionGrammarLexer(Lexer):
                   "LPAREN", "RPAREN", "LBRAC", "RBRAC", "PLUS", "MINUS", 
                   "TIMES", "DIV", "POINT", "POW", "UNDER", "WS" ]
 
-    grammarFileName = "ExpressionGrammar.g4"
+    grammarFileName = "ExpressionGrammarParser.g4"
 
     def __init__(self, input=None, output:TextIO = sys.stdout):
         super().__init__(input, output)

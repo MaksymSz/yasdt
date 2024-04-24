@@ -75,4 +75,36 @@ class Mul(Operator):
 
 
 class Div(Operator):
-    pass
+    def __init__(self, *args):
+        super().__init__(*args)
+        if len(self.args) != 2:
+            raise ArithmeticError(f"Provided not valid number of arguments to Div instance: {len(self.args)}")
+
+    def __str__(self):
+        _s_nom = f'({self.args[0]})' if isinstance(self.args[0], Operator) else f'{self.args[0]}'
+        _s_den = f'({self.args[1]})' if isinstance(self.args[1], Operator) else f'{self.args[1]}'
+
+        return f'{_s_nom}/{_s_den}'
+
+    def flatten(self):
+        return deepcopy(self)
+
+    def eval(self, x):
+        return self.args[0].eval(x) / self.args[1].eval(x)
+
+    def diff(self, simplify=False):
+        _nom_a = Mul(self.args[0].diff(), self.args[1])
+        _nom_b = Mul(self.args[0].diff(), self.args[1])
+        _nom_b.factor *= -1
+        _nom = Add(_nom_a, _nom_b)
+
+        _den = Mul(self.args[1], self.args[1])
+        return Div(_nom, _den)
+
+    def simplify(self):
+        _nom = self.args[0].simplify()
+        _den = self.args[1].simplify()
+        if isinstance(_den, Constant):
+            return _nom
+        else:
+            return Div(_nom, _den)

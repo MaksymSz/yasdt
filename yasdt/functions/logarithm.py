@@ -1,12 +1,11 @@
 from yasdt.core import Function
-from yasdt.operators.operator import Operator
-from yasdt.operators.mul import Div
-from yasdt.primary import Variable, Constant
+from yasdt.operators.mul import Mul, Div
+from yasdt.primary import Constant
 import math
 
 
 class Logarithm(Function):
-    def __init__(self, arg, factor, base):
+    def __init__(self, arg, factor=1, base=math.e):
         super().__init__(arg, factor)
         self.base = base
 
@@ -21,15 +20,19 @@ class Logarithm(Function):
 
     def diff(self):
         nominator = self.arg.diff()
-        denominator = self.arg()
+        if math.e == self.base:
+            denominator = self.arg
+        else:
+            denominator = Mul(self.arg, Logarithm(Constant(self.base)))
+        denominator.factor *= math.log(self.base, math.e)
         return Div(nominator, denominator)
 
     def simplify(self):
-        # TODO: complete implementation
-        pass
+        _arg = self.arg.simplify()
+        return Logarithm(_arg, base=self.base)
 
     def is_zero(self):
         pass
 
     def eval(self, x):
-        raise NotImplemented
+        return math.log(x, self.base)

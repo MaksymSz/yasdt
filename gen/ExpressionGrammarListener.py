@@ -1,4 +1,4 @@
-# Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammars/ExpressionGrammar.g4 by ANTLR 4.13.1
+# Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammar/ExpressionGrammarParser.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .ExpressionGrammarParser import ExpressionGrammarParser
