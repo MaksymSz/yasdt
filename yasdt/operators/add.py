@@ -7,7 +7,13 @@ class Add(Operator):
         _s = []
 
         for arg in self.args:
-            _s.append(f'+{str(arg)}' if arg.factor >= 0 else f'-({str(arg)})')
+            if arg.factor >= 0:
+                _s.append(f'+{str(arg)}')
+            else:
+                if isinstance(arg, Operator):
+                    _s.append(f'-({str(arg)})')
+                else:
+                    _s.append(str(arg))
         else:
             if '+' == _s[0][0]:
                 _s[0] = _s[0][1:]

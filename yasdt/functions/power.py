@@ -52,7 +52,8 @@ class Power(Function):
         elif 0 == self.powarg:
             return Constant(1)
         elif 1 == self.powarg:
-            return self.arg
+            arg.factor *= self.factor
+            return arg
         return Power(arg, factor=self.factor)
 
     def is_zero(self):

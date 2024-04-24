@@ -43,6 +43,15 @@ class ExpressionListener(ExpressionGrammarParserListener):
         else:
             pass
 
+    def exitFactor(self, ctx: ExpressionGrammarParser.FactorContext):
+        if ctx.getChildCount() == 5:
+            _arg = self.stack.pop()
+            powarg = float(ctx.NUMBER().getText())
+            if powarg % 1 == 0:
+                powarg = int(powarg)
+
+            self.stack.append(Power(_arg, 1, powarg))
+
     def exitSinus(self, ctx: ExpressionGrammarParser.SinusContext):
         child = self.stack.pop()
         self.stack.append(Sin(child))
