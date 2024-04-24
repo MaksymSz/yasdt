@@ -4,10 +4,13 @@ from yasdt.primary import Constant
 
 class Add(Operator):
     def __str__(self):
-        _s = ""
+        _s = []
         for arg in self.args:
-            _s += f'{str(arg)}+'
-        return _s.removesuffix('+')
+            _s.append(f'{str(arg)}')
+            _s.append('+')
+        else:
+            _s.pop()
+        return ''.join(_s)
 
     def eval(self, x):
         return sum(arg.eval(x) for arg in self.args)
@@ -50,6 +53,7 @@ class Add(Operator):
         if len(_args) == 1:
             return _args[0]
         return Add(*_args)
+
 
 class Sub(Operator):
     pass

@@ -1,18 +1,23 @@
 from yasdt.operators.operator import Operator
+from yasdt.operators.add import Add
 from operator import mul
 from functools import reduce
 from yasdt.primary import Variable, Constant
+from copy import deepcopy
 
 
 class Mul(Operator):
     def __str__(self):
-        _s = ""
+        _s = []
         for arg in self.args:
-            _s += f'{str(arg)}*'
-        return _s.removesuffix("*")
+            _s += f'{str(arg)}'
+            _s.append('*')
+        else:
+            _s.pop()
+        return ''.join(_s)
 
     def eval(self, x):
-        return reduce(mul, self.args, 1)
+        return reduce(mul, [arg.eval(x) for arg in self.args], 1)
 
     def flatten(self):
         if len(self.args) == 1:
@@ -27,11 +32,16 @@ class Mul(Operator):
             return _flatten
 
     def diff(self, simplify=False):
-        # TODO: add diff of multiplication, not only for 2 args
-        # _difs = [arg.diff() for arg in self.args]
-        # _args = [self.args[:i] + self.args[i:]]
+        _args = self.flatten().args
+        _difs = [arg.diff() for arg in _args]
 
-        pass
+        result = []
+        for i in range(len(_args)):
+            _a = deepcopy(_args)
+            _a[i] = _difs[i]
+            result.append(Mul(*_a))
+
+        return Add(*result)
 
     def simplify(self):
         _factor = 1
