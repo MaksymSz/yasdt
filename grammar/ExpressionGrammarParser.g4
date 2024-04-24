@@ -16,6 +16,7 @@ term
 
 factor
     : LPAREN expr RPAREN
+    | LPAREN expr RPAREN POW NUMBER
     | variable
     | constant
     | function
@@ -50,8 +51,6 @@ exponential
 power
     : variable POW NUMBER
     | constant POW NUMBER
-    | POW LPAREN factor COMMA NUMBER RPAREN
-    | POW LPAREN expr COMMA NUMBER RPAREN
     ;
 
 logarithm

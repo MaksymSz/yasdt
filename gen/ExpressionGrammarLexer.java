@@ -1,4 +1,4 @@
-// Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammars/ExpressionGrammarLexer.g4 by ANTLR 4.13.1
+// Generated from C:/Users/Maksym/PycharmProjects/yasdt/grammar/ExpressionGrammarLexer.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
