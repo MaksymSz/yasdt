@@ -38,6 +38,9 @@ class Sin(TrigFunc):
     def is_zero(self):
         pass
 
+    def eval(self, x):
+        return math.sin(self.arg.eval(x))
+
 
 class Cos(TrigFunc):
 
@@ -56,8 +59,12 @@ class Cos(TrigFunc):
     def is_zero(self):
         pass
 
+    def eval(self, x):
+        return math.cos(self.arg.eval(x))
+
 
 class Tan(TrigFunc):
+    # TODO: complete implementation
     def diff(self):
         pass
 
@@ -66,9 +73,13 @@ class Tan(TrigFunc):
 
     def is_zero(self):
         pass
+
+    def eval(self, x):
+        return math.tan(self.arg.eval(x))
 
 
 class Cot(TrigFunc):
+    # TODO: complete implementation
     def diff(self):
         pass
 
@@ -76,4 +87,7 @@ class Cot(TrigFunc):
         pass
 
     def is_zero(self):
+        pass
+
+    def eval(self, x):
         pass

@@ -17,7 +17,7 @@ class Mul(Operator):
         return ''.join(_s)
 
     def eval(self, x):
-        return reduce(mul, [arg.eval(x) for arg in self.args], 1)
+        return self.factor * reduce(mul, [arg.eval(x) for arg in self.args], 1)
 
     def flatten(self):
         if len(self.args) == 1:
@@ -44,11 +44,12 @@ class Mul(Operator):
         return Add(*result)
 
     def simplify(self):
+        f_args = self.flatten().args
         _factor = 1
         _args = []
         _flag = False
         _simple = []
-        for arg in self.args:
+        for arg in f_args:
             _simple.append(arg.simplify())
 
         for arg in _simple:

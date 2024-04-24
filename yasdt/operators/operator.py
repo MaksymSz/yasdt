@@ -7,6 +7,7 @@ class Operator(ABC):
 
     def __init__(self, *args):
         self.args = [arg for arg in args]
+        self.factor = 1
 
     @abstractmethod
     def flatten(self):

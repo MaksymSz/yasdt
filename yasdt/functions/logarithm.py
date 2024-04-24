@@ -25,7 +25,11 @@ class Logarithm(Function):
         return Div(nominator, denominator)
 
     def simplify(self):
+        # TODO: complete implementation
         pass
 
     def is_zero(self):
         pass
+
+    def eval(self, x):
+        raise NotImplemented

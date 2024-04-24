@@ -1,9 +1,12 @@
+import math
+
 from yasdt.function import Function
 from yasdt.operators.operator import Operator
 from yasdt.primary import Constant, Variable
 
 
 class Power(Function):
+
     def __init__(self, arg, factor=1, powarg=1):
         super().__init__(arg, factor)
         self.powarg = powarg
@@ -53,4 +56,7 @@ class Power(Function):
         return Power(arg, factor=self.factor)
 
     def is_zero(self):
-        raise NotImplemented
+        return False
+
+    def eval(self, x):
+        return math.pow(x, self.powarg)

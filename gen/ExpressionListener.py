@@ -2,7 +2,8 @@ import math
 
 from gen.ExpressionGrammarListener import ExpressionGrammarListener
 from gen.ExpressionGrammarParser import ExpressionGrammarParser
-from yasdt.operators.add import Add, Sub
+from yasdt.operators.operator import Operator
+from yasdt.operators.add import Add
 from yasdt.operators.mul import Mul, Div
 from yasdt.primary import Variable, Constant
 from yasdt.functions.trigonometric import Sin, Cos, Tan, Cot
@@ -22,10 +23,10 @@ class ExpressionListener(ExpressionGrammarListener):
             right = self.stack.pop()
             oper = ctx.getChild(1).getText()
 
-            if '+' == oper:
-                self.stack.append(Add(right, left))
-            elif '-' == oper:
-                self.stack.append(Sub(right, left))
+            if '-' == oper:
+                left.factor *= -1
+
+            self.stack.append(Add(right, left))
         else:
             pass
 

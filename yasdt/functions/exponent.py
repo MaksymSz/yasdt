@@ -34,3 +34,6 @@ class Exponent(Function):
 
     def is_zero(self):
         return False
+
+    def eval(self, x):
+        return math.exp(self.arg.eval(x))

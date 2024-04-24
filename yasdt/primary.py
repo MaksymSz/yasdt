@@ -33,6 +33,7 @@ class Variable:
 class Constant:
     def __init__(self, value):
         self.value = value
+        self.factor = 1 if value >= 0 else -1
 
     def __str__(self):
         return str(self.value)

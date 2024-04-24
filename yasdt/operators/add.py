@@ -5,15 +5,16 @@ from yasdt.primary import Constant
 class Add(Operator):
     def __str__(self):
         _s = []
+
         for arg in self.args:
-            _s.append(f'{str(arg)}')
-            _s.append('+')
+            _s.append(f'+{str(arg)}' if arg.factor >= 0 else f'-({str(arg)})')
         else:
-            _s.pop()
+            if '+' == _s[0][0]:
+                _s[0] = _s[0][1:]
         return ''.join(_s)
 
     def eval(self, x):
-        return sum(arg.eval(x) for arg in self.args)
+        return self.factor * sum(arg.eval(x) for arg in self.args)
 
     def flatten(self):
         if len(self.args) == 1:
@@ -29,18 +30,16 @@ class Add(Operator):
 
     def diff(self, simplify=False):
         _args = [arg.diff() for arg in self.args]
-        print('=======')
-        for a in _args:
-            print(a)
-        print('=======')
 
         return Add(*_args)
 
     def simplify(self):
+        f_args = self.flatten().args
+
         _const = 0
         _args = []
         _simple = []
-        for arg in self.args:
+        for arg in f_args:
             _simple.append(arg.simplify())
 
         for arg in _simple:
@@ -53,7 +52,3 @@ class Add(Operator):
         if len(_args) == 1:
             return _args[0]
         return Add(*_args)
-
-
-class Sub(Operator):
-    pass
