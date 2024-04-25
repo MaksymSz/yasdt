@@ -12,7 +12,7 @@ class Power(Function):
         super().__init__(arg, factor)
         self.powarg = powarg
 
-    def __str__(self):
+    def __repr__(self):
         f = "-" if self.factor == -1 else str(self.factor)
         f = "" if f == '1' else f
 

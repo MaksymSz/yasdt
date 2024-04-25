@@ -6,7 +6,7 @@ import math
 
 
 class Exponent(Function):
-    def __str__(self):
+    def __repr__(self):
         f = "-" if self.factor == -1 else str(self.factor)
         f = "" if f == '1' else f
         if isinstance(self.arg, Operator):

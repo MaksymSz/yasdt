@@ -9,7 +9,7 @@ class Logarithm(Function):
         super().__init__(arg, factor)
         self.base = base
 
-    def __str__(self):
+    def __repr__(self):
         f = "" if self.factor == 1 else self.factor
         if math.e == self.base:
             return f'{f}ln({str(self.arg)})'
