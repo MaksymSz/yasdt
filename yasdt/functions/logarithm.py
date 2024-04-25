@@ -35,4 +35,4 @@ class Logarithm(Function):
         pass
 
     def eval(self, x):
-        return math.log(x, self.base)
+        return self.factor*math.log(self.arg.eval(x), self.base)

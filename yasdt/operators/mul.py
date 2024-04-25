@@ -17,7 +17,7 @@ class Mul(Operator):
         return ''.join(_s)
 
     def eval(self, x):
-        return self.factor * reduce(mul, [arg.eval(x) for arg in self.args], 1)
+        return reduce(mul, [arg.eval(x) for arg in self.args], self.factor)
 
     def flatten(self):
         if len(self.args) == 1:
@@ -90,7 +90,7 @@ class Div(Operator):
         return deepcopy(self)
 
     def eval(self, x):
-        return self.args[0].eval(x) / self.args[1].eval(x)
+        return self.factor * self.args[0].eval(x) / self.args[1].eval(x)
 
     def diff(self, simplify=False):
         _nom_a = Mul(self.args[0].diff(), self.args[1])

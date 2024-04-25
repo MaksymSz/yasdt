@@ -1,5 +1,6 @@
 from yasdt.operators.operator import Operator
-from yasdt.primary import Constant
+from yasdt.primary import Variable, Constant
+from collections import Counter
 
 
 class Add(Operator):
@@ -48,13 +49,23 @@ class Add(Operator):
         for arg in f_args:
             _simple.append(arg.simplify())
 
+        _var_flag = False
+        _var_factor = 0
+
+        _class_ctr = {}
+
         for arg in _simple:
             if isinstance(arg, Constant):
                 _const += arg.value
+            elif isinstance(arg, Variable):
+                _var_flag = True
+                _var_factor += arg.factor
             else:
                 _args.append(arg)
         if _const != 0:
             _args.append(Constant(_const))
+        if _var_flag and _var_factor != 0:
+            _args.append(Variable(_var_factor))
         if len(_args) == 1:
             return _args[0]
         return Add(*_args)

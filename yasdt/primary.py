@@ -3,6 +3,13 @@ class Variable:
         self.factor = factor
 
     def __str__(self):
+        if -1 == self.factor:
+            return '-x'
+        elif 1 == self.factor:
+            return 'x'
+        else:
+            return f'{self.factor}x'
+
         return f'{"-" if -1 == self.factor else "" if 1 == self.factor else ""}x'
 
     def __add__(self, other):

@@ -20,12 +20,12 @@ def parse(exp_to_parse: str):
 
 # # input_text = '(x + 2)^2 + sin(2*e^{tan(x)*cot(4)} + 3*cos(ln(x)/log_2(2))) - 1'
 # input_text = '(sin(x))^2'
-input_text = '2+2*2'
-
-exp = parse(input_text)
-print(exp)
-dif = exp.diff()
-print('dif: ', dif)
-sim = dif.simplify()
-print(sim)
-print(type(sim))
+# input_text = '2+2*2'
+#
+# exp = parse(input_text)
+# print(exp)
+# dif = exp.diff()
+# print('dif: ', dif)
+# sim = dif.simplify()
+# print(sim)
+# print(type(sim))

@@ -36,4 +36,4 @@ class Exponent(Function):
         return False
 
     def eval(self, x):
-        return math.exp(self.arg.eval(x))
+        return self.factor*math.exp(self.arg.eval(x))

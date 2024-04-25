@@ -4,6 +4,7 @@ import math
 from yasdt.function import Function
 from yasdt.operators.mul import Div
 from abc import abstractmethod, ABC
+from yasdt.functions.power import Power
 
 
 class TrigFunc(Function, ABC):
@@ -36,10 +37,10 @@ class Sin(TrigFunc):
         return self
 
     def is_zero(self):
-        pass
+        raise NotImplemented
 
     def eval(self, x):
-        return math.sin(self.arg.eval(x))
+        return self.factor*math.sin(self.arg.eval(x))
 
 
 class Cos(TrigFunc):
@@ -57,37 +58,39 @@ class Cos(TrigFunc):
         return self
 
     def is_zero(self):
-        pass
+        raise NotImplemented
 
     def eval(self, x):
-        return math.cos(self.arg.eval(x))
+        return self.factor*math.cos(self.arg.eval(x))
 
 
 class Tan(TrigFunc):
-    # TODO: complete implementation
     def diff(self):
-        pass
+        _arg = self.arg.diff()
+        return Div(Constant(1), Power(Cos(_arg), 1, 2))
 
     def simplify(self):
-        pass
+        _arg = self.arg.simplify()
+        return Tan(_arg, factor=self.factor)
 
     def is_zero(self):
-        pass
+        return self.arg.is_zero()
 
     def eval(self, x):
-        return math.tan(self.arg.eval(x))
+        return self.factor * math.tan(self.arg.eval(x))
 
 
 class Cot(TrigFunc):
-    # TODO: complete implementation
     def diff(self):
-        pass
+        _arg = self.arg.diff()
+        return Div(Constant(1), Power(Sin(_arg), -1, 2))
 
     def simplify(self):
-        pass
+        _arg = self.arg.simplify()
+        return Cot(_arg, factor=self.factor)
 
     def is_zero(self):
-        pass
+        return self.arg.is_zero()
 
     def eval(self, x):
-        pass
+        return self.factor / math.tan(self.arg.eval(x))

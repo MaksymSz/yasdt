@@ -60,4 +60,4 @@ class Power(Function):
         return False
 
     def eval(self, x):
-        return math.pow(x, self.powarg)
+        return self.factor*math.pow(self.arg.eval(x), self.powarg)
