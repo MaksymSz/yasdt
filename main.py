@@ -1,24 +1,43 @@
-# from testt import parse
+from testt import parse
+import json
+from functools import reduce
+from yasdt.functions.power import Power
+from yasdt.functions.trigonometric import Cos
+from yasdt.primary import Variable
+
+# with open('tests.json') as f:
+#     tests = json.load(f)
 #
-# # input_text = '2x - 2x^3*(sin(x) + cos(x*3x))'
-# # input_text = 'x + 2x + 2'
-# input_text = '2x + 3 + 2x'
+# for i, input_text in enumerate(tests):
+#     print(f'-----  {i}  -----')
+#     expr = parse(input_text['input'])
+#     print(f'expr: \t{expr}')
 #
+#     simp = expr.simplify()
+#     # print(f'simp: \t{simp}')
+#     dif = simp.diff()
+#     # print(f'dif: \t{dif}')
 #
-# expr = parse(input_text)
-# print(f'expr: \t{expr}')
+#     dif_simp = dif.simplify()
+#     print(f'difs: \t{dif_simp}')
+#     print(f'res: \t{input_text["result"]}')
+
+# input_text = '(x + 2x) * sin(-4x + e^3) + cos(x * x)'
+input_text = '(-12.3*e^x + 7) / x'
+
+expr = parse(input_text)
+
+print(f'expr: \t{expr}')
 #
-# simp = expr.simplify()
-# print(f'simp: \t{simp}')
-#
-# dif = simp.diff()
+# a = expr.args[0]
+# print(type(a), a)
+
+simp = expr.simplify()
+print(f'simp: \t{simp}')
+# print(type(simp))
+dif = simp.diff()
 # print(f'dif: \t{dif}')
 #
-# dif_simp = dif.simplify()
-# print(f'dif_s: \t{dif_simp}')
 #
-
-m = {1,2,5}
-
-for i in m:
-    print(i)
+dif_simp = dif.simplify()
+print(f'difs: \t{dif_simp}')

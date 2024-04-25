@@ -3,6 +3,7 @@ import math
 from yasdt.function import Function
 from yasdt.operators.operator import Operator
 from yasdt.primary import Constant, Variable
+from copy import deepcopy
 
 
 class Power(Function):
@@ -28,7 +29,7 @@ class Power(Function):
         if not isinstance(self.arg, Variable):
             arg = self.arg.diff()
         else:
-            arg = self.arg
+            arg = deepcopy(self.arg)
 
         if isinstance(arg, Variable):
             if self.powarg > 1 and self.powarg != 2:

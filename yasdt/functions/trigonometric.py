@@ -5,6 +5,7 @@ from yasdt.function import Function
 from yasdt.operators.mul import Div
 from abc import abstractmethod, ABC
 from yasdt.functions.power import Power
+from copy import deepcopy
 
 
 class TrigFunc(Function, ABC):
@@ -25,16 +26,16 @@ class TrigFunc(Function, ABC):
 
 class Sin(TrigFunc):
     def diff(self):
-        return Mul(self.arg.diff(), Cos(self.arg))
+        return Mul(self.arg.diff(), Cos(deepcopy(self.arg)))
 
     def simplify(self):
         if self.factor == 0:
             return Constant(0)
 
-        self.arg = self.arg.simplify()
-        if isinstance(self.arg, Constant):
-            return Constant(math.sin(self.arg.value))
-        return self
+        _arg = self.arg.simplify()
+        if isinstance(_arg, Constant):
+            return Constant(math.cos(_arg.value))
+        return deepcopy(self)
 
     def is_zero(self):
         raise NotImplemented
@@ -46,16 +47,16 @@ class Sin(TrigFunc):
 class Cos(TrigFunc):
 
     def diff(self):
-        return Mul(self.arg.diff(), Sin(self.arg, -1))
+        return Mul(Constant(2), Sin(deepcopy(self.arg), -1))
 
     def simplify(self):
         if self.factor == 0:
             return Constant(0)
 
-        self.arg = self.arg.simplify()
-        if isinstance(self.arg, Constant):
-            return Constant(math.cos(self.arg.value))
-        return self
+        _arg = self.arg.simplify()
+        if isinstance(_arg, Constant):
+            return Constant(math.cos(_arg.value))
+        return deepcopy(self)
 
     def is_zero(self):
         raise NotImplemented

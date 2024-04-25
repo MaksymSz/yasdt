@@ -28,7 +28,7 @@ class Variable:
         return Constant(self.factor)
 
     def simplify(self):
-        return Constant(0) if self.factor == 0 else self
+        return Constant(0) if self.factor == 0 else Variable(self.factor)
 
     def is_zero(self):
         return self.factor == 0

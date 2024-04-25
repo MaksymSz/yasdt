@@ -16,15 +16,8 @@ TODO: Description
 * Add method, that generate latex notation for expression
 
 # Tests
-1. `x + x * x`
-2. `x * x + x * x`
-3. `sin(x) + cos(2x)`
-4. `sin(e^x) * ln(x - 2x)`
-5. `(x + 2x) * sin((-4)x + e^3) - cos(x * x)`
-6. `e^{sin(2 * x)} + 3x^2 - 5`
-7. `(-12.3e^3 + 7) / x`
-8. `(x + 2)^2 + sin(2*e^{tan(x)*cot(4)} + 3*cos(ln(x)/log_2(2))) - 1`
-9. `2+2*2`
+2. `e^{sin(2 * x)} + 3x^2 - 5` - wrong parse of negative number
+3. `(-12.3*e^x + 7) / x` wrong diff
 
 
 # Notes:

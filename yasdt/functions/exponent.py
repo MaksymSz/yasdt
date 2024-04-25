@@ -28,8 +28,8 @@ class Exponent(Function):
 
     def simplify(self):
         arg = self.arg.simplify()
-        if isinstance(arg, Constant):
-            return Constant(math.exp(arg.value))
+        # if isinstance(arg, Constant):
+        #     return Constant(math.exp(arg.value))
         return Exponent(arg, factor=self.factor)
 
     def is_zero(self):

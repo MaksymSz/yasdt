@@ -4,13 +4,14 @@ from operator import mul
 from functools import reduce
 from yasdt.primary import Variable, Constant
 from copy import deepcopy
+from yasdt.functions.power import Power
 
 
 class Mul(Operator):
     def __str__(self):
         _s = []
         for arg in self.args:
-            _s += f'{str(arg)}'
+            _s += f'({str(arg)})' if isinstance(arg, Operator) else f'{str(arg)}'
             _s.append('*')
         else:
             _s.pop()
@@ -32,7 +33,10 @@ class Mul(Operator):
             return _flatten
 
     def diff(self, simplify=False):
-        _args = self.flatten().args
+        _flat = self.flatten()
+        if not isinstance(_flat, Operator):
+            return _flat
+        _args = _flat.args
         _difs = [arg.diff() for arg in _args]
 
         result = []
@@ -44,10 +48,11 @@ class Mul(Operator):
         return Add(*result)
 
     def simplify(self):
+        # print(self)
         f_args = self.flatten().args
         _factor = 1
         _args = []
-        _flag = False
+        _flag = 0
         _simple = []
         for arg in f_args:
             _simple.append(arg.simplify())
@@ -57,20 +62,24 @@ class Mul(Operator):
                 _factor *= arg.value
             elif isinstance(arg, Variable):
                 _factor *= arg.factor
-                _flag = True
+                _flag += 1
             else:
                 _args.append(arg)
 
-        if _flag:
-            _args.append(Variable(_factor))
-        elif len(_args) == 1:
-            _args[0].factor *= _factor
-            return _args[0]
-        else:
-            _args.append(Constant(_factor))
         if _factor == 0:
             return Constant(0)
 
+        if 0 == _flag and len(_args) != 0:
+            _args[0].factor *= _factor
+        elif 1 == _flag:
+            _args.append(Variable(_factor))
+        elif _flag > 1:
+            _args.append(Power(Variable(1), _factor, _flag))
+        else:
+            _args.append(Constant(_factor))
+
+        if len(_args) == 1:
+            return _args[0]
         return Mul(*_args)
 
 

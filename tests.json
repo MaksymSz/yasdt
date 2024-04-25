@@ -1,44 +1,46 @@
-{
-  "tests": [
-    {
-      "input": "2+3",
-      "result": "5"
-    },
-    {
-      "input": "2+2*2",
-      "result": "8"
-    },
-    {
-      "input": "x + x * x",
-      "result": "x+2x"
-    },
-    {
-      "input": "x * x + x * x",
-      "result": ""
-    },
-    {
-      "input": "sin(x) + cos(2x)",
-      "result": ""
-    },
-    {
-      "input": "sin(e^x) * ln(x - 2x)",
-      "result": ""
-    },
-    {
-      "input": "(x + 2x) * sin((-4)x + e^3) - cos(x * x)",
-      "result": ""
-    },
-    {
-      "input": "e^{sin(2 * x)} + 3x^2 - 5",
-      "result": ""
-    },
-    {
-      "input": "(-12.3e^3 + 7) / x",
-      "result": ""
-    },
-    {
-      "input": "(x + 2)^2 + sin(2*e^{tan(x)*cot(4)} + 3*cos(ln(x)/log_2(2))) - 1",
-      "result": ""
-    }
-  ]
-}
+[
+  {
+    "input": "2+3",
+    "result": "0"
+  },
+  {
+    "input": "2+2*2",
+    "result": "0"
+  },
+  {
+    "input": "x + x * x",
+    "result": "2x+1"
+  },
+  {
+    "input": "x * x + x * x",
+    "result": "4x"
+  },
+  {
+    "input": "sin(x) + cos(2x)",
+    "result": "cos(x)-2sin(2x)"
+  },
+  {
+    "input": "sin(e^x) * ln(x - 2x)",
+    "result": "e^x*cos(e^x)*ln(x-2x) - sin(e^x)/(x-2x)"
+  },
+  {
+    "input": "(x + 2x) * sin(-4x + e^3) + cos(x * x)",
+    "result": ""
+  },
+  {
+    "input": "e^{sin(2 * x)} + 3x^2 - 5",
+    "result": ""
+  },
+  {
+    "input": "(-12.3*e^x + 7) / x",
+    "result": ""
+  },
+  {
+    "input": "(x + 2)^2 + sin(2*e^{tan(x)*cot(4)} + 3*cos(ln(x)/log_2(2))) - 1",
+    "result": ""
+  },
+  {
+    "input": "2x + 3 - 2x + sin(x) - sin(x)",
+    "result": "3"
+  }
+]
