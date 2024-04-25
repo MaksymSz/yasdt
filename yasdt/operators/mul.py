@@ -102,10 +102,11 @@ class Div(Operator):
         return self.factor * self.args[0].eval(x) / self.args[1].eval(x)
 
     def diff(self, simplify=False):
-        _nom_a = Mul(self.args[0].diff(), self.args[1])
-        _nom_b = Mul(self.args[0].diff(), self.args[1])
-        _nom_b.factor *= -1
+        _nom_a = Mul(self.args[0].diff(), deepcopy(self.args[1]))
+        _nom_b = Mul(self.args[0], deepcopy(self.args[1].diff()))
+        # _nom_b.factor *= -1
         _nom = Add(_nom_a, _nom_b)
+        _nom.factor = -1
 
         _den = Mul(self.args[1], self.args[1])
         return Div(_nom, _den)

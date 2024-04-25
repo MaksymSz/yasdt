@@ -54,8 +54,8 @@ class Power(Function):
             return Constant(1)
         elif 1 == self.powarg:
             arg.factor *= self.factor
-            return arg
-        return Power(arg, factor=self.factor)
+            return deepcopy(arg)
+        return Power(arg, factor=self.factor, powarg=self.powarg)
 
     def is_zero(self):
         return False

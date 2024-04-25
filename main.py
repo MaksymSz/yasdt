@@ -23,7 +23,7 @@ from yasdt.primary import Variable
 #     print(f'res: \t{input_text["result"]}')
 
 # input_text = '(x + 2x) * sin(-4x + e^3) + cos(x * x)'
-input_text = '(-12.3*e^x + 7) / x'
+input_text = '3x^2 - 5x'
 
 expr = parse(input_text)
 
