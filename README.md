@@ -7,10 +7,6 @@ TODO: Description
 * Improve printing operators
 * Do simple GUI
 
-# Tests
-
-3. `(-12.3*e^x + 7) / x` ugly printing
-
 # Notes:
 
 * Rebuild project:

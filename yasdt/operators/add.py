@@ -2,11 +2,25 @@ from yasdt.operators.operator import Operator
 from yasdt.primary import Variable, Constant
 from yasdt.function import Function
 from yasdt.functions.power import Power
+from copy import deepcopy
 
 
 class Add(Operator):
-    def __str__(self):
+    def __add__(self, other):
+        return Add(deepcopy(self), deepcopy(other))
+
+    def __sub__(self, other):
+        _a = Add(deepcopy(self), deepcopy(other))
+        _a.factor = -1
+        return _a
+
+    def __mul__(self, other):
+        raise NotImplemented
+
+    def __repr__(self):
         _s = []
+        if self.factor < 0:
+            return f'{self.args[0]}-{self.args[1]}'
 
         for arg in self.args:
             if arg.factor >= 0:
@@ -31,11 +45,16 @@ class Add(Operator):
         if len(self.args) == 1:
             return self.args[0]
         else:
+            _args = deepcopy(self.args)
             if self.factor < 0:
-                for arg in self.args:
-                    arg.factor *= self.factor
+                for arg in _args:
+                    if isinstance(arg, Constant):
+                        arg.value *= self.factor
+                    else:
+                        arg.factor *= self.factor
+
             _flatten = Add()
-            for arg in self.args:
+            for arg in _args:
                 if isinstance(arg, Add):
                     _flatten.args += arg.flatten().args
                 else:
@@ -49,9 +68,6 @@ class Add(Operator):
 
     def simplify(self):
         f_args = self.flatten().args
-        # print('----------')
-        # for a in f_args:
-        #     print('\t', a)
 
         _const = 0
         _args = []

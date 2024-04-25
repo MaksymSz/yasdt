@@ -23,10 +23,11 @@ class ExpressionListener(ExpressionGrammarParserListener):
             right = self.stack.pop()
             oper = ctx.getChild(1).getText()
 
+            _a = Add(right, left)
             if '-' == oper:
-                left.factor *= -1
+                _a.factor = -1
 
-            self.stack.append(Add(right, left))
+            self.stack.append(_a)
         else:
             pass
 

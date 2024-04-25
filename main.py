@@ -23,21 +23,21 @@ from yasdt.primary import Variable
 #     print(f'res: \t{input_text["result"]}')
 
 # input_text = '(x + 2x) * sin(-4x + e^3) + cos(x * x)'
-input_text = '3x^2 - 5x'
-
-expr = parse(input_text)
-
-print(f'expr: \t{expr}')
+# input_text = '3x - 2'
 #
-# a = expr.args[0]
-# print(type(a), a)
+# expr = parse(input_text)
+# print(f'expr: \t{expr}')
+# #
+# # a = expr.args[0]
+# # print(type(a), a)
+#
+# simp = expr.simplify()
+# print(f'simp: \t{simp}')
+# # print(type(simp))
+# dif = simp.diff()
+# # print(f'dif: \t{dif}')
+# #
+# #
+# dif_simp = dif.simplify()
+# print(f'difs: \t{dif_simp}')
 
-simp = expr.simplify()
-print(f'simp: \t{simp}')
-# print(type(simp))
-dif = simp.diff()
-# print(f'dif: \t{dif}')
-#
-#
-dif_simp = dif.simplify()
-print(f'difs: \t{dif_simp}')

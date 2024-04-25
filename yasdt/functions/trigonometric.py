@@ -9,7 +9,7 @@ from copy import deepcopy
 
 
 class TrigFunc(Function, ABC):
-    def __str__(self):
+    def __repr__(self):
         funcname = self.__class__.__name__.lower()
         if self.factor == 1:
             f = ""

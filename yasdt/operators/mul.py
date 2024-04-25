@@ -8,7 +8,16 @@ from yasdt.functions.power import Power
 
 
 class Mul(Operator):
-    def __str__(self):
+    def __add__(self, other):
+        raise NotImplemented
+
+    def __sub__(self, other):
+        raise NotImplemented
+
+    def __mul__(self, other):
+        return Mul(deepcopy(self), deepcopy(other))
+
+    def __repr__(self):
         _s = []
         for arg in self.args:
             _s += f'({str(arg)})' if isinstance(arg, Operator) else f'{str(arg)}'
@@ -89,7 +98,16 @@ class Div(Operator):
         if len(self.args) != 2:
             raise ArithmeticError(f"Provided not valid number of arguments to Div instance: {len(self.args)}")
 
-    def __str__(self):
+    def __add__(self, other):
+        raise NotImplemented
+
+    def __sub__(self, other):
+        raise NotImplemented
+
+    def __mul__(self, other):
+        return Div(Mul(deepcopy(self.args[0]), deepcopy(other)), deepcopy(self.args[1]))
+
+    def __repr__(self):
         _s_nom = f'({self.args[0]})' if isinstance(self.args[0], Operator) else f'{self.args[0]}'
         _s_den = f'({self.args[1]})' if isinstance(self.args[1], Operator) else f'{self.args[1]}'
 
@@ -102,8 +120,8 @@ class Div(Operator):
         return self.factor * self.args[0].eval(x) / self.args[1].eval(x)
 
     def diff(self, simplify=False):
-        _nom_a = Mul(self.args[0].diff(), deepcopy(self.args[1]))
-        _nom_b = Mul(self.args[0], deepcopy(self.args[1].diff()))
+        _nom_a = Mul(self.args[0].diff(), deepcopy(self.args[1])).simplify()
+        _nom_b = Mul(self.args[0], deepcopy(self.args[1].diff())).simplify()
         # _nom_b.factor *= -1
         _nom = Add(_nom_a, _nom_b)
         _nom.factor = -1

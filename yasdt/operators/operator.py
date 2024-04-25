@@ -10,6 +10,22 @@ class Operator(ABC):
         self.factor = 1
 
     @abstractmethod
+    def __repr__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+    @abstractmethod
+    def __sub__(self, other):
+        pass
+
+    @abstractmethod
+    def __mul__(self, other):
+        pass
+
+    @abstractmethod
     def flatten(self):
         """
         Return flatten version of operator works like:
