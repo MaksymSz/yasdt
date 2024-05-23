@@ -10,4 +10,5 @@ def plot(functions, arg_min, arg_max, show_grid=False, *args, **kwargs):
     if show_grid:
         plt.grid()
     plt.legend()
+    # plt.savefig('plot_adv.png', transparent=True)
     plt.show()

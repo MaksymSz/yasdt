@@ -15,7 +15,7 @@ class TrigFunc(Function, ABC):
             f = ""
         elif self.factor < 0:
             f = "-" if self.factor == -1 else str(self.factor)
-            return f'({f}{funcname}({str(self.arg)}))'
+            return f'{f}{funcname}({str(self.arg)})'
         else:
             f = str(self.factor)
         return f'{f}{funcname}({str(self.arg)})'
