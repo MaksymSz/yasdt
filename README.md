@@ -10,6 +10,7 @@
 Działanie projektu jest inspirowane działaniem biblioteki [sympy](https://www.sympy.org/).
 Moduł **yasdt** umożliwia przetwarzanie symboliczne równań matematycznych zapisanych w postaci łańcucha znaków do postaci obiektów w języku Python, na których to można wykonywać dalsze operacje, między innymi różniczkownie.
 Wejściowy ciąg jest skanowany, a następnie parsowany, po czym następuje generowanie kodu w języku Python, w którym to następuje wykonanie obliczeń symbolicznych implementowanych jako drzewo.
+Wyrażenia mogą zostać uproszczone w celu pozbycia się redundantnych elementów, na przykład: `1*2x + 0*3 - 0` → `2x`
 
 * ogólne cele programu: przetwarzanie wyrażeń symbolicznych
 * język implementacji: **[Python](https://www.python.org/)**
@@ -23,12 +24,9 @@ Odpowiednie pliku znajdują się w repozytorium, poniżej znajdują się odpowie
 * [opis gramatyki](https://github.com/MaksymSz/yasdt/blob/master/grammar/ExpressionGrammarParser.g4)
 
 Poniżej znajduje się drzewo wyprowadzenie przykładowego wyrażenia $sin(2x) + 2x$
+![logo](https://github.com/MaksymSz/yasdt/blob/master/parseTree.png)
 
+## Krótki opis obsługi wraz z przykładem użycia
+```console
 
-## Informacje o stosowanych generatorach parserów, pakiety zewnętrzne
-
-
-## Krótki opis obsługi
-
-## Przykład użycia
-
+````
