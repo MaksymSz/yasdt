@@ -6,6 +6,7 @@ import math
 
 
 class Exponent(Function):
+
     def __repr__(self):
         f = "-" if self.factor == -1 else str(self.factor)
         f = "" if f == '1' else f
@@ -36,4 +37,4 @@ class Exponent(Function):
         return False
 
     def eval(self, x):
-        return self.factor*math.exp(self.arg.eval(x))
+        return self.factor * math.exp(self.arg.eval(x))

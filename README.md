@@ -31,4 +31,7 @@ Poniżej znajduje się drzewo wyprowadzenie przykładowego wyrażenia $sin(2x) +
 ## Krótki opis obsługi
 
 ## Przykład użycia
-
+```console
+> from yasdt import parse
+> expr = parse(
+```
