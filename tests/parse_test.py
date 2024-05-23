@@ -15,4 +15,4 @@ for i, input_text in enumerate(tests):
     dif_simp = dif.simplify()
     print(f'derivative: \t{dif_simp}')
     print(f'expected:    \t{input_text["result"]}')
-
+    # print(f'|{i+1}|{input_text["input"]}|{dif_simp}|')
