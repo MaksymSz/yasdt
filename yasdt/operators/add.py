@@ -19,7 +19,9 @@ class Add(Operator):
 
     def __repr__(self):
         _s = []
-        if self.factor < 0:
+        # if len(self.args) == 2:
+        #     return f'{self.args[0]}{"-" if self.factor < 0 else "+"}{self.args[1]}'
+        if self.factor < 0 and len(self.args) == 2:
             return f'{self.args[0]}-{self.args[1]}'
 
         for arg in self.args:
@@ -29,7 +31,9 @@ class Add(Operator):
                 else:
                     _s.append(f'+{str(arg)}')
             else:
-                if isinstance(arg, Operator):
+                if isinstance(arg, Add):
+                    _s.append(f'+({str(arg)})')
+                elif isinstance(arg, Operator):
                     _s.append(f'-({str(arg)})')
                 else:
                     _s.append(str(arg))
@@ -64,7 +68,7 @@ class Add(Operator):
     def diff(self, simplify=False):
         _args = [arg.diff() for arg in self.args]
 
-        return Add(*_args)
+        return Add(*_args).simplify() if simplify else Add(*_args)
 
     def simplify(self):
         f_args = self.flatten().args

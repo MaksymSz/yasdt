@@ -25,52 +25,59 @@ class TrigFunc(Function, ABC):
 
 
 class Sin(TrigFunc):
-    def diff(self):
-        return Mul(self.arg.diff(), Cos(deepcopy(self.arg)))
+    def diff(self, simplify=False):
+        return Mul(Constant(self.factor), self.arg.diff(), Cos(deepcopy(self.arg))).simplify() if simplify else Mul(
+            Constant(self.factor), self.arg.diff(),
+            Cos(deepcopy(self.arg)))
 
     def simplify(self):
         if self.factor == 0:
             return Constant(0)
 
         _arg = self.arg.simplify()
-        if isinstance(_arg, Constant):
-            return Constant(math.cos(_arg.value))
+        # if isinstance(_arg, Constant):
+        #     return Constant(math.cos(_arg.value))
         return deepcopy(self)
 
     def is_zero(self):
         raise NotImplemented
 
     def eval(self, x):
-        return self.factor*math.sin(self.arg.eval(x))
+        return self.factor * math.sin(self.arg.eval(x))
 
 
 class Cos(TrigFunc):
 
-    def diff(self):
-        return Mul(Constant(2), Sin(deepcopy(self.arg), -1))
+    def diff(self, simplify=False):
+        return Mul(Constant(self.factor), self.arg.diff(), Sin(deepcopy(self.arg), -1)).simplify() if simplify else Mul(
+            Constant(self.factor), self.arg.diff(),
+            Sin(deepcopy(self.arg), -1))
+        # return Mul(Constant(self.factor), Constant(2), Sin(deepcopy(self.arg), -1))
 
     def simplify(self):
         if self.factor == 0:
             return Constant(0)
 
         _arg = self.arg.simplify()
-        if isinstance(_arg, Constant):
-            return Constant(math.cos(_arg.value))
+        # if isinstance(_arg, Constant):
+        #     return Constant(math.cos(_arg.value))
         return deepcopy(self)
 
     def is_zero(self):
         raise NotImplemented
 
     def eval(self, x):
-        return self.factor*math.cos(self.arg.eval(x))
+        return self.factor * math.cos(self.arg.eval(x))
 
 
 class Tan(TrigFunc):
     def diff(self):
         _arg = self.arg.diff()
-        return Div(Constant(1), Power(Cos(_arg), 1, 2))
+        return Div(Constant(self.factor), Power(Cos(_arg), 1, 2))
 
     def simplify(self):
+        if self.factor == 0:
+            return Constant(0)
         _arg = self.arg.simplify()
         return Tan(_arg, factor=self.factor)
 
@@ -84,9 +91,11 @@ class Tan(TrigFunc):
 class Cot(TrigFunc):
     def diff(self):
         _arg = self.arg.diff()
-        return Div(Constant(1), Power(Sin(_arg), -1, 2))
+        return Div(Constant(self.factor), Power(Sin(_arg), -1, 2))
 
     def simplify(self):
+        if self.factor == 0:
+            return Constant(0)
         _arg = self.arg.simplify()
         return Cot(_arg, factor=self.factor)
 

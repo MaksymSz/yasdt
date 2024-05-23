@@ -54,7 +54,7 @@ class Mul(Operator):
             _a[i] = _difs[i]
             result.append(Mul(*_a))
 
-        return Add(*result)
+        return Add(*result).simplify() if simplify else Add(*result)
 
     def simplify(self):
         # print(self)

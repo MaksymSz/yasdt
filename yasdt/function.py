@@ -40,7 +40,7 @@ class Function(ABC):
     #     return Mul(deepcopy(self), deepcopy(other))
 
     @abstractmethod
-    def diff(self):
+    def diff(self, simplify=False):
         pass
 
     @abstractmethod

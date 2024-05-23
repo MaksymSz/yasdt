@@ -1,51 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ANTLRGenerationPreferences">
-    <option name="perGrammarGenerationSettings">
-      <list>
-        <PerGrammarGenerationSettings>
-          <option name="fileName" value="$PROJECT_DIR$/ExpressionGrammar.g4" />
-          <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Users\Maksym\PycharmProjects\yasdt\build" />
-          <option name="libDir" value="" />
-          <option name="encoding" value="" />
-          <option name="pkg" value="" />
-          <option name="language" value="Python3" />
-          <option name="generateVisitor" value="true" />
-        </PerGrammarGenerationSettings>
-        <PerGrammarGenerationSettings>
-          <option name="fileName" value="$PROJECT_DIR$/grammars/ExpressionGrammar.g4" />
-          <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Users\Maksym\PycharmProjects\yasdt\gen" />
-          <option name="libDir" value="C:\Users\Maksym\PycharmProjects\yasdt\grammars" />
-          <option name="encoding" value="" />
-          <option name="pkg" value="" />
-          <option name="language" value="Python3" />
-          <option name="generateVisitor" value="true" />
-        </PerGrammarGenerationSettings>
-        <PerGrammarGenerationSettings>
-          <option name="fileName" value="$PROJECT_DIR$/grammars/Calc.g4" />
-          <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Users\Maksym\PycharmProjects\yasdt\calc\test" />
-          <option name="libDir" value="" />
-          <option name="encoding" value="" />
-          <option name="pkg" value="" />
-          <option name="language" value="Python3" />
-          <option name="generateVisitor" value="true" />
-        </PerGrammarGenerationSettings>
-        <PerGrammarGenerationSettings>
-          <option name="fileName" value="$PROJECT_DIR$/grammar/ExpressionGrammarParser.g4" />
-          <option name="autoGen" value="true" />
-          <option name="outputDir" value="C:\Users\Maksym\PycharmProjects\yasdt\gen_test" />
-          <option name="libDir" value="" />
-          <option name="encoding" value="" />
-          <option name="pkg" value="parsing" />
-          <option name="language" value="Python3" />
-          <option name="generateVisitor" value="true" />
-        </PerGrammarGenerationSettings>
-      </list>
-    </option>
-  </component>
   <component name="Black">
     <option name="sdkName" value="Python 3.10 (yasdt)" />
   </component>

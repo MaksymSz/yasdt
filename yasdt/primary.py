@@ -2,7 +2,7 @@ class Variable:
     def __init__(self, factor=1):
         self.factor = factor
 
-    def __str__(self):
+    def __repr__(self):
         if -1 == self.factor:
             return '-x'
         elif 1 == self.factor:
@@ -10,7 +10,7 @@ class Variable:
         else:
             return f'{self.factor}x'
 
-        return f'{"-" if -1 == self.factor else "" if 1 == self.factor else ""}x'
+        # return f'{"-" if -1 == self.factor else "" if 1 == self.factor else ""}x'
 
     def __add__(self, other):
         return Variable(self.factor + other.factor)
@@ -40,9 +40,9 @@ class Variable:
 class Constant:
     def __init__(self, value):
         self.value = value
-        self.factor = 1 if value >= 0 else -1
+        self.__factor = 1 if value >= 0 else -1
 
-    def __str__(self):
+    def __repr__(self):
         return str(self.value)
 
     def __add__(self, other):
@@ -53,6 +53,15 @@ class Constant:
 
     def __mul__(self, other):
         return Constant(self.value * other.value)
+
+    @property
+    def factor(self):
+        return self.__factor
+
+    @factor.setter
+    def factor(self, value):
+        self.value *= value
+        self.__factor = value
 
     def diff(self):
         return Constant(0)

@@ -16,7 +16,7 @@ class Exponent(Function):
     def __eq__(self, other):
         return self.arg is other.arg
 
-    def diff(self):
+    def diff(self, simplify=False):
         if isinstance(self.arg, Constant):
             return Constant(0)
         elif isinstance(self.arg, Variable):
@@ -24,7 +24,7 @@ class Exponent(Function):
             _result.factor = self.factor * self.arg.factor
             return _result
         else:
-            return Mul(self.arg.diff(), self)
+            return Mul(self.arg.diff(), self).simplify() if simplify else Mul(self.arg.diff(), self)
 
     def simplify(self):
         arg = self.arg.simplify()

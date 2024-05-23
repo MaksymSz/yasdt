@@ -25,7 +25,7 @@ class Expression(ABC):
         self.arg2 = arg2
         self.operator = operator
 
-    def __str__(self):
+    def __repr__(self):
         """
 
         :return:

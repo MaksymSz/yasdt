@@ -18,14 +18,14 @@ class Logarithm(Function):
     def __eq__(self, other):
         pass
 
-    def diff(self):
+    def diff(self, simplify=False):
         nominator = self.arg.diff()
         if math.e == self.base:
             denominator = self.arg
         else:
             denominator = Mul(self.arg, Logarithm(Constant(self.base)))
         denominator.factor *= math.log(self.base, math.e)
-        return Div(nominator, denominator)
+        return Div(nominator, denominator).simplify() if simplify else Div(nominator, denominator)
 
     def simplify(self):
         _arg = self.arg.simplify()

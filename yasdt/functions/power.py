@@ -23,7 +23,7 @@ class Power(Function):
     def __eq__(self, other):
         raise NotImplemented
 
-    def diff(self):
+    def diff(self, simplify=False):
         if 0 == self.powarg and self.arg.is_zero():
             raise ArithmeticError("Operation 0/0 not defined")
         if not isinstance(self.arg, Variable):
@@ -44,7 +44,7 @@ class Power(Function):
             return arg
         elif 0 == factor or isinstance(arg, Constant):
             return Constant(factor)
-        return Power(arg, factor=factor, powarg=self.powarg - 1)
+        return Power(arg, factor=factor, powarg=self.powarg - 1).simplify() if simplify else Power(arg, factor=factor, powarg=self.powarg - 1)
 
     def simplify(self):
         arg = self.arg.simplify()

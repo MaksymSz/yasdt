@@ -20,6 +20,10 @@
     "result": "cos(x)-2sin(2x)"
   },
   {
+    "input": "12.3*sin(x) + 12.3*sin(x)",
+    "result": "24.6cos(x)"
+  },
+  {
     "input": "sin(e^x) * ln(x - 2x)",
     "result": "e^x*cos(e^x)*ln(x-2x) - sin(e^x)/(x-2x)"
   },
@@ -29,7 +33,7 @@
   },
   {
     "input": "e^{sin(2 * x)} + 3x^2 - 5",
-    "result": ""
+    "result": "2cos(2*x)*e^sin(2*x)+6x"
   },
   {
     "input": "(-12.3*e^x + 7) / x",
@@ -37,10 +41,10 @@
   },
   {
     "input": "(x + 2)^2 + sin(2*e^{tan(x)*cot(4)} + 3*cos(ln(x)/log_2(2))) - 1",
-    "result": ""
+    "result": "(((1/cos(1)^2)*cot(4)+tan(x)*(1/-sin(0)^2))*e^{tan(x)*cot(4)}+(((1/x)*log_2(2)+ln(x)*(0/ln(2)))/(log_2(2)*log_2(2)))*(-sin(ln(x)/log_2(2))))*cos(2*e^{tan(x)*cot(4)}+3*cos(ln(x)/log_2(2)))+2"
   },
   {
     "input": "2x + 3 - 2x + sin(x) - sin(x)",
-    "result": "3"
+    "result": "0"
   }
 ]
