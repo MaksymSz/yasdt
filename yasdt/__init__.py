@@ -1,7 +1,7 @@
 from antlr4 import *
-from gen_test.parsing.ExpressionGrammarLexer import ExpressionGrammarLexer
-from gen_test.parsing.ExpressionGrammarParser import ExpressionGrammarParser
-from gen_test.parsing.ExpressionListener import ExpressionListener
+from generation.parsing.ExpressionGrammarLexer import ExpressionGrammarLexer
+from generation.parsing.ExpressionGrammarParser import ExpressionGrammarParser
+from generation.parsing.ExpressionListener import ExpressionListener
 
 
 def parse(exp_to_parse: str):

@@ -1,7 +1,7 @@
 import math
 
-from gen.ExpressionGrammarListener import ExpressionGrammarListener
-from gen.ExpressionGrammarParser import ExpressionGrammarParser
+from generation.parsing.ExpressionGrammarParserListener import ExpressionGrammarParserListener
+from generation.parsing.ExpressionGrammarParser import ExpressionGrammarParser
 from yasdt.operators.operator import Operator
 from yasdt.operators.add import Add
 from yasdt.operators.mul import Mul, Div
@@ -13,7 +13,7 @@ from yasdt.function import Function
 from yasdt.functions.logarithm import Logarithm
 
 
-class ExpressionListener(ExpressionGrammarListener):
+class ExpressionListener(ExpressionGrammarParserListener):
     def __init__(self):
         self.stack = []
 
@@ -23,10 +23,24 @@ class ExpressionListener(ExpressionGrammarListener):
             right = self.stack.pop()
             oper = ctx.getChild(1).getText()
 
-            if '-' == oper:
-                left.factor *= -1
+            # print(type(left), left)
+            # print(type(right), right)
 
-            self.stack.append(Add(right, left))
+            if '-' == oper and isinstance(left, Add):
+                _left_args = left.args
+                _left_args[0].factor *= -1
+                _a = Add(right, *tuple(_left_args))
+            # _a.args[1].factor *= -1
+            # if isinstance(_a.args[1], Constant):
+            #     _a.args[1].value *= -1
+            # else:
+            #     _a.args[1].factor *= -1
+
+            else:
+                _a = Add(right, left)
+                if '-' == oper:
+                    _a.args[1].factor *= -1
+            self.stack.append(_a)
         else:
             pass
 
@@ -42,6 +56,15 @@ class ExpressionListener(ExpressionGrammarListener):
                 self.stack.append(Div(right, left))
         else:
             pass
+
+    def exitFactor(self, ctx: ExpressionGrammarParser.FactorContext):
+        if ctx.getChildCount() == 5:
+            _arg = self.stack.pop()
+            powarg = float(ctx.NUMBER().getText())
+            if powarg % 1 == 0:
+                powarg = int(powarg)
+
+            self.stack.append(Power(_arg, 1, powarg))
 
     def exitSinus(self, ctx: ExpressionGrammarParser.SinusContext):
         child = self.stack.pop()
