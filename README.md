@@ -27,9 +27,7 @@ Wyrażenia mogą zostać uproszczone w celu pozbycia się redundantnych element�
   uproszczone i używane do generowania wykresów.
 * język implementacji: Projekt został zaimplementowany w języku **[Python](https://www.python.org/)**, co zapewnia dużą
   elastyczność i dostępność bogatej biblioteki narzędzi oraz bibliotek do obliczeń matematycznych i wizualizacji danych.
-* sposób realizacji parsera: Parser został zrealizowany za pomocą narzędzia **[ANTLR4](https://github.com/antlr/antlr4)
-  **
-  **, które umożliwia tworzenie analizatorów składniowych dla różnych języków. ANTLR4 pozwala na definiowanie gramatyk
+* sposób realizacji parsera: Parser został zrealizowany za pomocą narzędzia **[ANTLR4](https://github.com/antlr/antlr4)**, które umożliwia tworzenie analizatorów składniowych dla różnych języków. ANTLR4 pozwala na definiowanie gramatyk
   oraz generowanie kodu parsera w wybranym języku programowania.
 * wykorzystywane zewnętrzne moduły: Do generowania wykresów zostały użyte
   biblioteki **[matplotlib](https://matplotlib.org)** oraz **[NumPy](https://numpy.org/)**
