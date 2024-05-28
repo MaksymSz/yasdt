@@ -7,6 +7,15 @@
 </details>
 
 ## Krótki opis projektu
+* ogólne cele programu: Głównym celem programu jest przetwarzanie wyrażeń symbolicznych w celu ich różniczkowania,
+  uproszczenia oraz wykonywania na nich operacji matematycznych. Wyrażenia te mogą być następnie analizowane,
+  uproszczone i używane do generowania wykresów.
+* język implementacji: Projekt został zaimplementowany w języku **[Python](https://www.python.org/)**, co zapewnia dużą
+  elastyczność i dostępność bogatej biblioteki narzędzi oraz bibliotek do obliczeń matematycznych i wizualizacji danych.
+* sposób realizacji parsera: Parser został zrealizowany za pomocą narzędzia **[ANTLR4](https://github.com/antlr/antlr4)**, które umożliwia tworzenie analizatorów składniowych dla różnych języków. ANTLR4 pozwala na definiowanie gramatyk
+  oraz generowanie kodu parsera w wybranym języku programowania.
+* wykorzystywane zewnętrzne moduły: Do generowania wykresów zostały użyte
+  biblioteki **[matplotlib](https://matplotlib.org)** oraz **[NumPy](https://numpy.org/)**
 
 Celem projektu jest umożliwienie przekształcania wyrażeń zapisanych w
 formie tekstowej na obiekty Python, na których można wykonywać różnorodne operacje,
@@ -21,16 +30,6 @@ Wyrażenia mogą zostać uproszczone w celu pozbycia się redundantnych element�
 
 > **_Uwaga:_**  Różniczkowanie symboliczne oraz upraszczanie zostały zaimplementowane od zera, do przetwarzania wyrażeń
 > projekt wykorzystuje tylko moduły dostępne w bibliotece standardowej Pythona
-
-* ogólne cele programu: Głównym celem programu jest przetwarzanie wyrażeń symbolicznych w celu ich różniczkowania,
-  uproszczenia oraz wykonywania na nich operacji matematycznych. Wyrażenia te mogą być następnie analizowane,
-  uproszczone i używane do generowania wykresów.
-* język implementacji: Projekt został zaimplementowany w języku **[Python](https://www.python.org/)**, co zapewnia dużą
-  elastyczność i dostępność bogatej biblioteki narzędzi oraz bibliotek do obliczeń matematycznych i wizualizacji danych.
-* sposób realizacji parsera: Parser został zrealizowany za pomocą narzędzia **[ANTLR4](https://github.com/antlr/antlr4)**, które umożliwia tworzenie analizatorów składniowych dla różnych języków. ANTLR4 pozwala na definiowanie gramatyk
-  oraz generowanie kodu parsera w wybranym języku programowania.
-* wykorzystywane zewnętrzne moduły: Do generowania wykresów zostały użyte
-  biblioteki **[matplotlib](https://matplotlib.org)** oraz **[NumPy](https://numpy.org/)**
 
 ## Główne etapy przetwarzania wyrażeń obejmują:
 
